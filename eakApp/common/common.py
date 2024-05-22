@@ -1,12 +1,12 @@
 import json
-from aekApp.common import dbfunctions;
+from eakApp.common import dbfunctions;
 from django.http import HttpResponse;
 from rest_framework.views import APIView
 from django.db import connection
 
 cursor = connection.cursor()
 
-class GetALllStateDetails(APIView):
+class GetAllStateDetails(APIView):
     def post(self,request):
         try:
             params={

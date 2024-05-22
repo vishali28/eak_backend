@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%p^gvuxo9mlj@jrem^k&f5sjbj#alk&m$nm%@y)*5+c+_ao-u9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'eakApi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'Name':'eak',
+        'NAME':'eak',
         'USER':'eakadmin',
         'PASSWORD':'RD8i@H7BJBhTq8V',
         'HOST':'183.82.98.147',

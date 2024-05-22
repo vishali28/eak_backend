@@ -3,7 +3,7 @@ from django.db import connection
 from rest_framework.response import Response
 from django.http import HttpResponse
 from rest_framework.views import APIView
-from aekApp.common import dbfunctions
+from eakApp.common import dbfunctions
 
 
 cursor = connection.cursor()

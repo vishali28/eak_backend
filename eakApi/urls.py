@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from eakApp.patients import *
+from eakApp.common.common import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('eakapi/getallstatesetails/', GetAllStateDetails.as_view()),
+    path('eakapi/getallpatientdetails/',GetPatietsDetails.as_view()),
+    path('eakapi/addpatientdetails/',InsertUpdatePatientDetails.as_view()),
+    path('eakapi/deletepatientdetailsbyid/',DeletePatientDetailsById.as_view())
 ]
