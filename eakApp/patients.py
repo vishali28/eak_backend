@@ -69,7 +69,29 @@ class DeletePatientDetailsById(APIView):
            return HttpResponse(err)
 
         
+class GetPatientDetailsByid(APIView):
+  def post(self, request):
+    try:
+       
+      params = {
+        'patientid': request.data['patient_id']
+      }
+      cursor.callproc(dbfunctions.get_patient_detailsbyid, params)
+      pa_details = cursor.fetchall()
+
+      return HttpResponse(json.dumps(pa_details[0][0]))
+    except Exception as err:
+       return HttpResponse(err)
         
+            
       
+class GetMedicationDetails(APIView):
+   def get(self,request):
+      try:
+         
+        cursor.callproc(dbfunctions.getmedicationdetails)
+        medication_details =cursor.fetchall()
+        return HttpResponse(json.dumps(medication_details[0][0]))
 
-
+      except Exception as err:
+         return HttpResponse(err)
