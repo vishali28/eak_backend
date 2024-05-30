@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from eakApp.common import dbfunctions
+import boto3
 
 
 cursor = connection.cursor()
@@ -26,6 +27,8 @@ class GetPatietsDetails(APIView):
 class InsertUpdatePatientDetails(APIView):
   def post(self,request):
     try:
+        
+      
         params ={
             'patientdetails_id': request.data['patientid'],
             'patientnumber' : request.data['patient_num'],
@@ -41,7 +44,9 @@ class InsertUpdatePatientDetails(APIView):
             'address' : request.data['p_address'],
             'mobileno' : request.data['p_mobileno'],
             'district' : request.data['p_district'],
-            'p_state_id' : request.data['p_stateid']
+            'p_state_id' : request.data['p_stateid'],
+            'createdby': request.data['created_by'],
+            'createddate': request.data['cereated_date']
         }
         cursor.callproc(dbfunctions.ins_update_patient_details,params)
         patientres= cursor.fetchall()

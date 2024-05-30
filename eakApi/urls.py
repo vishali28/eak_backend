@@ -24,5 +24,6 @@ urlpatterns = [
     path('eakapi/getallstatesetails/', GetAllStateDetails.as_view()),
     path('eakapi/getallpatientdetails/',GetPatietsDetails.as_view()),
     path('eakapi/addpatientdetails/',InsertUpdatePatientDetails.as_view()),
-    path('eakapi/deletepatientdetailsbyid/',DeletePatientDetailsById.as_view())
+    path('eakapi/deletepatientdetailsbyid/',DeletePatientDetailsById.as_view()),
+    path('eakapi/uploadfile/', UploadFile.as_view()),
 ]
