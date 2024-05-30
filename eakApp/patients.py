@@ -95,3 +95,25 @@ class GetMedicationDetails(APIView):
 
       except Exception as err:
          return HttpResponse(err)
+      
+
+class InsertPatientMedicationDetails(APIView):
+   def post(self,request):
+      try:
+          params={
+            'patientid':request.data['patient_id'] ,
+	          'doctorid': request.data['doctor_id'] ,
+	          'medicielistid':request.data['medicine_listid'] ,
+	          'med_dosage' :request.data['dosage'],
+	          'med_consume_time': request.data['consumetime'] ,
+	          'special_instructions':request.data['spe_instruct'] ,
+	          'next_medicine':request.data['next_med'],
+	          'aliment' :request.data['p_aliment'],
+	          'created_by' : request.data['createdby']
+          }
+          cursor.callproc(dbfunctions.insert_patient_medicationdetails,params)
+          res= cursor.fetchall()
+          return HttpResponse(json.dumps(res[0][0]))
+      
+      except Exception as err:
+         return HttpResponse(err)
