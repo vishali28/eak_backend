@@ -34,6 +34,7 @@ urlpatterns = [
     path('eakapi/getpatientdatabyid/', GetPatientDetailsByid.as_view()),
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     path('eakapi/getmedicationdetails/', GetMedicationDetails.as_view()),
+    path('eakapi/inspatientmedicaldetails/', InsertPatientMedicationDetails.as_view()),
    
     
 ]
