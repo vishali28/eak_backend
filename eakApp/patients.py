@@ -74,7 +74,8 @@ class GetPatientDetailsByid(APIView):
     try:
        
       params = {
-        'patientid': request.data['patient_id']
+        'patientid': request.data['patient_id'],
+        'action_typeid': request.data['actionid']
       }
       cursor.callproc(dbfunctions.get_patient_detailsbyid, params)
       pa_details = cursor.fetchall()
