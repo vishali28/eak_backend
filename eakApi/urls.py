@@ -18,11 +18,23 @@ from django.contrib import admin
 from django.urls import path
 from eakApp.patients import *
 from eakApp.common.common import *
+from django.views.static import serve
+from django.conf.urls import static
+from django.urls import re_path as url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('eakapi/getallstatesetails/', GetAllStateDetails.as_view()),
     path('eakapi/getallpatientdetails/',GetPatietsDetails.as_view()),
     path('eakapi/addpatientdetails/',InsertUpdatePatientDetails.as_view()),
-    path('eakapi/deletepatientdetailsbyid/',DeletePatientDetailsById.as_view())
+    path('eakapi/deletepatientdetailsbyid/',DeletePatientDetailsById.as_view()),
+    path('eakapi/uploadfile/', UploadFile.as_view()),
+    path('eakapi/getallmedicinetypes/', GetAllMedicinetypes.as_view()),
+    # path('eakapi/getmedicineexcel/', InsertMedicinefromExcel.as_view()),
+    path('eakapi/getpatientdatabyid/', GetPatientDetailsByid.as_view()),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    path('eakapi/getmedicationdetails/', GetMedicationDetails.as_view()),
+    path('eakapi/inspatientmedicaldetails/', InsertPatientMedicationDetails.as_view()),
+   
+    
 ]
