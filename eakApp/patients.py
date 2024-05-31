@@ -46,7 +46,7 @@ class InsertUpdatePatientDetails(APIView):
             'district' : request.data['p_district'],
             'p_state_id' : request.data['p_stateid'],
             'createdby': request.data['created_by'],
-            'createddate': request.data['cereated_date'],
+            'createddate': request.data['created_date'],
             'branchid': request.data['branch_id'],
             'attachmentname':request.data['attachment']
         }
