@@ -1,5 +1,5 @@
 import json
-from eakApp.common import dbfunctions;
+from eakApp.common import dbfunctions, dbconnect
 from django.http import HttpResponse;
 from rest_framework.views import APIView
 from django.db import connection
@@ -53,33 +53,33 @@ class UploadFile(APIView):
 class GetAllMedicinetypes(APIView):
     def get(self, request):
         try:
-
-            cursor.callproc(dbfunctions.getallmedicinetypes)
-            med_types = cursor.fetchall()
-            return HttpResponse(json.dumps(med_types[0][0]))
+            params ={}
+            # cursor.callproc(dbfunctions.getallmedicinetypes)
+            med_types = dbconnect.query_executer.get(dbfunctions.getallmedicinetypes, params)
+            return HttpResponse(json.dumps(med_types))
         except Exception as err:
             return HttpResponse(err)
 
 
+# for inserting master data from excel list from api
 
+# class InsertMedicinefromExcel(APIView):
+#     def get(self,request):
+#         try:
 
-class InsertMedicinefromExcel(APIView):
-    def get(self,request):
-        try:
-
-            file = request.FILES['uploads']
-            excelfile= pd.read_excel(file, engine='openpyxl')
-            listdata = excelfile.values.tolist()
-            finallist = [item for nestlist in listdata for item in nestlist]
-            print(finallist)
-            params ={
-                'medicinelist': finallist
-            }
-            cursor.callproc(dbfunctions.insmedicinemaster_details,params)
-            mastermedicine = cursor.fetchall()
-            return HttpResponse(json.dumps(mastermedicine))
-        except Exception as err:
-            return HttpResponse(err)
+#             file = request.FILES['uploads']
+#             excelfile= pd.read_excel(file, engine='openpyxl')
+#             listdata = excelfile.values.tolist()
+#             finallist = [item for nestlist in listdata for item in nestlist]
+#             print(finallist)
+#             params ={
+#                 'medicinelist': finallist
+#             }
+#             cursor.callproc(dbfunctions.insmedicinemaster_details,params)
+#             mastermedicine = cursor.fetchall()
+#             return HttpResponse(json.dumps(mastermedicine))
+#         except Exception as err:
+#             return HttpResponse(err)
 
     
         
