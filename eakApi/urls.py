@@ -22,6 +22,7 @@ from django.views.static import serve
 from django.conf.urls import static
 from django.urls import re_path as url
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('eakapi/getallstatesetails/', GetAllStateDetails.as_view()),
@@ -35,6 +36,7 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     path('eakapi/getmedicationdetails/', GetMedicationDetails.as_view()),
     path('eakapi/inspatientmedicaldetails/', InsertPatientMedicationDetails.as_view()),
+    path('eakapi/updatepatentcasesheet/',UpdateCasesheetbyPatientid.as_view()),
    
     
 ]

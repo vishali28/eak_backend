@@ -30,5 +30,7 @@ class query_executer(object):
         else:
             if result is None:
                 return []
+            else:
+                return result[0][0]
             
         

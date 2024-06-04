@@ -12,7 +12,7 @@ import pandas as pd
 
 
 
-cursor = connection.cursor()
+# cursor = connection.cursor()
 
 class GetAllStateDetails(APIView):
     def post(self,request):
@@ -21,8 +21,8 @@ class GetAllStateDetails(APIView):
                 'countryid':request.data['country_id']
             }
             print(params,'params')
-            cursor.callproc(dbfunctions.getallstatedetailsbycountryid, params)
-            stateres= cursor.fetchall()
+            # cursor.callproc(dbfunctions.getallstatedetailsbycountryid, params)
+            stateres= dbconnect.query_executer.post(dbfunctions.getallstatedetailsbycountryid, params)
             return HttpResponse(json.dumps(stateres[0][0]))
 
         except Exception as err:
