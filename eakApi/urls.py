@@ -21,6 +21,7 @@ from eakApp.common.common import *
 from django.views.static import serve
 from django.conf.urls import static
 from django.urls import re_path as url
+from eakApp.users import *
 
 
 urlpatterns = [
@@ -37,6 +38,7 @@ urlpatterns = [
     path('eakapi/getmedicationdetails/', GetMedicationDetails.as_view()),
     path('eakapi/inspatientmedicaldetails/', InsertPatientMedicationDetails.as_view()),
     path('eakapi/updatepatentcasesheet/',UpdateCasesheetbyPatientid.as_view()),
+    path('eakapi/insertupdateuserdetails/', Ins_UpdateUserDetails.as_view()),
    
     
 ]
