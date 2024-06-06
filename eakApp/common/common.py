@@ -23,7 +23,7 @@ class GetAllStateDetails(APIView):
             print(params,'params')
             # cursor.callproc(dbfunctions.getallstatedetailsbycountryid, params)
             stateres= dbconnect.query_executer.post(dbfunctions.getallstatedetailsbycountryid, params)
-            return HttpResponse(json.dumps(stateres[0][0]))
+            return HttpResponse(json.dumps(stateres))
 
         except Exception as err:
             return HttpResponse(err)

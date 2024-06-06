@@ -26,7 +26,7 @@ from eakApp.users import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('eakapi/getallstatesetails/', GetAllStateDetails.as_view()),
+    path('eakapi/getallstatesdetails/', GetAllStateDetails.as_view()),
     path('eakapi/getallpatientdetails/',GetPatietsDetails.as_view()),
     path('eakapi/addpatientdetails/',InsertUpdatePatientDetails.as_view()),
     path('eakapi/deletepatientdetailsbyid/',DeletePatientDetailsById.as_view()),
